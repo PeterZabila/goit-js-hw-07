@@ -30,12 +30,18 @@ function onClickModal(e) {
         return;
     }
 
-    const instance = basicLightbox.create(`
-        <img src="${e.target.dataset.source}">
-    `)
+   const instance = basicLightbox.create(`<img src="${e.target.dataset.source}">`,
+    { onShow: () => {window.addEventListener('keydown', onEsc) }},)
+
+    console.log(e.target);
 
     instance.show();
+
+    function onEsc(e) {
+        if (e.key === 'Escape') {
+            instance.close();
+            window.removeEventListener('keydown', onEsc);
+        }
+    }
+
 };
-
-
-
