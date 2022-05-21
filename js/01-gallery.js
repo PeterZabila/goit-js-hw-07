@@ -34,9 +34,7 @@ function onClickModal(e) {
         <img src="${e.target.dataset.source}">
     `)
 
-    instance.show()
-
-    // new SimpleLightbox('.gallery a', { captionDelay: 250, captionsData: "alt",});
+    instance.show();
 };
 
 
