@@ -4,8 +4,8 @@ import { galleryItems } from './gallery-items.js';
 const gallery = document.querySelector('.gallery');
 
 function addGalleryItems (galleryItems) {
-   const pictures = galleryItems.map(({preview, original, description}) => {
-        return`
+   const pictures = galleryItems.reduce((acc, {preview, original, description}) => {
+        return acc + `
         <li class="gallery__item">
             <a class="gallery__item" href="${original}">
                 <img class="gallery__image" src="${preview}" alt="${description}" />
@@ -13,7 +13,7 @@ function addGalleryItems (galleryItems) {
         </li>`
 
 
-    }).join('');
+    }, '')
 
     gallery.insertAdjacentHTML('afterbegin', pictures);
 };
@@ -28,6 +28,10 @@ function onClickModal(e) {
         return;
     }
 
-   new SimpleLightbox('.gallery a', {  captionDelay: 250, captionsData: "alt",});
+   const instance = new SimpleLightbox('.gallery a', { fadeSpeed: 900, captionDelay: 250, captionsData: "alt", scrollZoom: true, });
 
+   
 };
+
+
+

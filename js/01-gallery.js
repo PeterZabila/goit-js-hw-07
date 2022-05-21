@@ -32,11 +32,17 @@ function onClickModal(e) {
 
     const instance = basicLightbox.create(`
         <img src="${e.target.dataset.source}">
-    `)
+    `,  {onShow: () => {e.target.addEventListener('keydown', onEscPress) }})
 
     instance.show()
 
-    // new SimpleLightbox('.gallery a', { captionDelay: 250, captionsData: "alt",});
+    function onEscPress(e) {
+        if (e.code === 'Escape') {
+            instance.close();
+            window.removeEventListener('keydown', onEscPress);
+        }
+    }
+
 };
 
 
