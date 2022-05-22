@@ -20,14 +20,4 @@ function addGalleryItems (galleryItems) {
 
 addGalleryItems(galleryItems);
 
-gallery.addEventListener('click', onClickModal);
-
-function onClickModal(e) {
-    e.preventDefault();
-    if(e.target.nodeName !== "IMG") {
-        return;
-    }
-    console.log(typeof(e.target.alt));
-
- new SimpleLightbox('.gallery a', { fadeSpeed: 500, captionDelay: 250, captionsData: "alt", scrollZoom: true, });
-};
+new SimpleLightbox('.gallery a', { fadeSpeed: 500, captionDelay: 250, captionsData: "alt", scrollZoom: true, });
